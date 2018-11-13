@@ -119,6 +119,7 @@ defmodule Elasticsearch.Cluster do
   @type config :: %{
           :url => String.t(),
           :api => module,
+          :otp_app => atom(),
           optional(:json_library) => module,
           optional(:username) => String.t(),
           optional(:password) => String.t(),

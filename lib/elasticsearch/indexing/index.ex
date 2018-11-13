@@ -268,7 +268,9 @@ defmodule Elasticsearch.Index do
           | {:error, File.posix()}
           | {:error, Elasticsearch.Exception.t()}
   def create_from_file(cluster, name, file) do
-    with {:ok, settings} <- File.read(file) do
+    file_path_within_app = Application.app_dir(cluster.otp_app, file)
+
+    with {:ok, settings} <- File.read(file_path_within_app) do
       create(cluster, name, settings)
     end
   end

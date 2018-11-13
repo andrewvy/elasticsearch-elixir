@@ -15,7 +15,7 @@ defmodule Elasticsearch.Cluster.Config do
   end
 
   def build(otp_app, module, config) do
-    config = Enum.into(config, %{})
+    config = Enum.into(config, %{otp_app: otp_app})
 
     from_app =
       otp_app
